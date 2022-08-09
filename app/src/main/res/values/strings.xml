@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Slabber</string>
+    <string name="default_notification_channel_id">082056</string>
+</resources>
