@@ -25,7 +25,7 @@ public class CheckActivity extends AppCompatActivity {
 
     private void Init(){
         // init textview and buttons
-        StartText = findViewById(R.id.StartTextView);
+        StartText = findViewById(R.id.SaveTextView);
         InitAnimation();
     }
 

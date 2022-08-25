@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:icon="@drawable/ic_baseline_notifications_24"
+        app:title="@string/messages_header">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="allow_post"
+            android:title="@string/messages_post" />
+        <SwitchPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="false"
+            android:key="allow_comments"
+            android:title="@string/messages_comments" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

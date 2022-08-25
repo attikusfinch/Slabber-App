@@ -51,6 +51,20 @@
         app:tint="@null" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="22dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="visible"
+        app:backgroundTint="@color/gray"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_baseline_settings_24"
+        app:tint="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/random"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

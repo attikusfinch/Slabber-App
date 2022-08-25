@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Slabber</string>
     <string name="default_notification_channel_id">082056</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Уведомления</string>
+
+    <string name="messages_post">Получать уведомления о статьях</string>
+    <string name="messages_comments">Получать уведомления о комметариях</string>
 </resources>

@@ -41,7 +41,7 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
     private WebView webView;
 
     private FloatingActionButton mFloatingButton;
-    private FloatingActionButton ReloadButton, RandomButton, TimeButton, VoiceButton;
+    private FloatingActionButton ReloadButton, RandomButton, TimeButton, VoiceButton, SettingButton;
     private CardView TimePanel;
 
     private TextToSpeech tts;
@@ -83,25 +83,9 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         HideActionBar();
         WebViewConfigure();
         InitFabButton();
-        InitFirebase();
         if(intent.getData() != null){
             OpenLink(intent.getDataString());
         }
-    }
-
-    private void InitFirebase(){
-        FirebaseMessaging.getInstance().subscribeToTopic("Slabber")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Subscribed";
-                        if (!task.isSuccessful()) {
-                            msg = "Subscribe failed";
-                        }
-                        Log.d(TAG, msg);
-                        Toast.makeText(WebActivity.this, msg, Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
     private void OpenLink(String link) {
@@ -117,6 +101,7 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         VoiceButton = findViewById(R.id.voice);
         RandomButton = findViewById(R.id.random);
         TimePanel = findViewById(R.id.timeInfo);
+        SettingButton = findViewById(R.id.setting);
 
         TimeIndicator = findViewById(R.id.TimeInfoIndicator);
 
@@ -125,6 +110,7 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         VoiceButton.setVisibility(View.GONE);
         ReloadButton.setVisibility(View.GONE);
         RandomButton.setVisibility(View.GONE);
+        SettingButton.setVisibility(View.GONE);
         TimePanel.setVisibility(View.GONE);
 
         ButtonOnClick();
@@ -144,14 +130,20 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
                 }
                 ReloadButton.show();
                 RandomButton.show();
+                SettingButton.show();
             }else{
                 isAllFabVisible = false;
                 TimeButton.hide();
                 VoiceButton.hide();
                 ReloadButton.hide();
                 RandomButton.hide();
+                SettingButton.hide();
                 TimePanel.setVisibility(View.GONE);
             }
+        });
+        SettingButton.setOnClickListener(view -> {
+            Intent OpenSettings = new Intent(this, SettingsActivity.class);
+            startActivity(OpenSettings);
         });
         RandomButton.setOnClickListener(view -> {
             Random rand = new Random();
