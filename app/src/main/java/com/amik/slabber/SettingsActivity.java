@@ -86,7 +86,7 @@ public class SettingsActivity extends AppCompatActivity {
                             msg = "Subscribe failed";
                         }
                         Log.d(TAG, msg);
-                        Toast.makeText(SettingsActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SettingsActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -101,7 +101,7 @@ public class SettingsActivity extends AppCompatActivity {
                             msg = "Subscribe failed";
                         }
                         Log.d(TAG, msg);
-                        Toast.makeText(SettingsActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SettingsActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -116,7 +116,7 @@ public class SettingsActivity extends AppCompatActivity {
                             msg = "UnSubscribe failed";
                         }
                         Log.d(TAG, msg);
-                        Toast.makeText(SettingsActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SettingsActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -131,7 +131,7 @@ public class SettingsActivity extends AppCompatActivity {
                             msg = "UnSubscribe failed";
                         }
                         Log.d(TAG, msg);
-                        Toast.makeText(SettingsActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SettingsActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
