@@ -22,6 +22,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class SavedActivity extends AppCompatActivity {
 
@@ -36,13 +37,15 @@ public class SavedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save);
+        Objects.requireNonNull(getSupportActionBar()).hide();
         Init();
-        //setUpViews();
+        setUpViews();
     }
 
     private void Init(){
         progressBar = findViewById(R.id.progressLayout);
         filesList = findViewById(R.id.filesList);
+        goBack = findViewById(R.id.goBack);
     }
 
     @Override
@@ -59,12 +62,7 @@ public class SavedActivity extends AppCompatActivity {
     }
 
     private void setUpViews() {
-        goBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        goBack.setOnClickListener(v -> onBackPressed());
     }
 
     @SuppressLint("StaticFieldLeak")

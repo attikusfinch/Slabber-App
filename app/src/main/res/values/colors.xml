@@ -3,7 +3,7 @@
     <!--Black theme-->
     <color name="gray_200">#B3B3B3</color>
     <color name="gray_500">#6C6C6C</color>
-    <color name="gray_700">#FFFFFF</color>
+    <color name="gray_700">#252525</color>
     <color name="teal_200">#353535</color>
     <color name="teal_700">#7E7E7E</color>
     <color name="black">#FF000000</color>
