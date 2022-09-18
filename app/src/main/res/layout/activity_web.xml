@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,11 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
+        android:contentDescription="TODO"
         app:backgroundTint="@color/gray"
         app:fabSize="normal"
         app:srcCompat="@drawable/slabber"
-        app:tint="@null"
-        android:contentDescription="TODO" />
+        app:tint="@null" />
 
     <!--Mini buttons-->
 
@@ -65,7 +64,35 @@
         app:tint="@null" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/random"
+        android:id="@+id/save_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="22dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="visible"
+        app:backgroundTint="@color/gray"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_round_menu_24"
+        app:tint="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/save_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="255dp"
+        android:contentDescription="@string/app_name"
+        android:visibility="visible"
+        app:backgroundTint="@color/gray"
+        app:fabSize="mini"
+        app:srcCompat="@drawable/ic_round_download_24"
+        app:tint="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
@@ -75,7 +102,7 @@
         android:visibility="visible"
         app:backgroundTint="@color/gray"
         app:fabSize="mini"
-        app:srcCompat="@drawable/ic_random"
+        app:srcCompat="@drawable/ic_round_home_24"
         app:tint="@null" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

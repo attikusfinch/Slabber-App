@@ -8,4 +8,6 @@
 
     <string name="messages_post">Получать уведомления о статьях</string>
     <string name="messages_comments">Получать уведомления о комметариях</string>
+
+    <string name="saved_page">Сохраненые статьи</string>
 </resources>

@@ -20,16 +20,15 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
@@ -41,14 +40,14 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
     private WebView webView;
 
     private FloatingActionButton mFloatingButton;
-    private FloatingActionButton ReloadButton, RandomButton, TimeButton, VoiceButton, SettingButton;
+    private FloatingActionButton ReloadButton, HomeButton, TimeButton, VoiceButton, SettingButton, DownloadButton, DownloadedButton;
     private CardView TimePanel;
 
     private TextToSpeech tts;
 
     private TextView TimeIndicator;
 
-    private String TAG = "WebActivity";
+    private final String TAG = "WebActivity";
 
     boolean isAllFabVisible;
 
@@ -60,6 +59,14 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
     public static final int REQUEST_SELECT_FILE = 100;
     public ValueCallback<Uri[]> uploadMessage;
 
+    public int FILE_OPEN_REQUEST;
+    public String FILE_DATA;
+
+    public WebActivity(){
+        this.FILE_DATA = "open_file_data";
+        this.FILE_OPEN_REQUEST = 23400;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -68,6 +75,11 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
             if (uploadMessage == null) return;
             uploadMessage.onReceiveValue(WebChromeClient.FileChooserParams.parseResult(resultCode, data));
             uploadMessage = null;
+        }
+
+        if (requestCode == FILE_OPEN_REQUEST && data != null && data.hasExtra(FILE_DATA)){
+            String FilePath = data.getStringExtra(FILE_DATA);
+            webView.loadUrl("file://" + new File(FilePath).getPath());
         }
     }
 
@@ -83,6 +95,7 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         HideActionBar();
         WebViewConfigure();
         InitFabButton();
+
         if(intent.getData() != null){
             OpenLink(intent.getDataString());
         }
@@ -99,9 +112,11 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         ReloadButton = findViewById(R.id.reload);
         TimeButton = findViewById(R.id.time);
         VoiceButton = findViewById(R.id.voice);
-        RandomButton = findViewById(R.id.random);
+        HomeButton = findViewById(R.id.home);
         TimePanel = findViewById(R.id.timeInfo);
         SettingButton = findViewById(R.id.setting);
+        DownloadButton = findViewById(R.id.save_page);
+        DownloadedButton = findViewById(R.id.save_menu);
 
         TimeIndicator = findViewById(R.id.TimeInfoIndicator);
 
@@ -109,9 +124,11 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         TimeButton.setVisibility(View.GONE);
         VoiceButton.setVisibility(View.GONE);
         ReloadButton.setVisibility(View.GONE);
-        RandomButton.setVisibility(View.GONE);
+        HomeButton.setVisibility(View.GONE);
         SettingButton.setVisibility(View.GONE);
         TimePanel.setVisibility(View.GONE);
+        DownloadButton.setVisibility(View.GONE);
+        DownloadedButton.setVisibility(View.GONE);
 
         ButtonOnClick();
     }
@@ -122,6 +139,7 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
                 isAllFabVisible = true;
                 if(webView.getUrl().contains("/posts/") && !webView.getUrl().contains("edit")){
                     TimeButton.show();
+                    DownloadButton.show();
                     TimePanel.setVisibility(View.VISIBLE);
                     TextToTime();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && isTTSAvailable) {
@@ -129,15 +147,18 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
                     }
                 }
                 ReloadButton.show();
-                RandomButton.show();
+                HomeButton.show();
                 SettingButton.show();
+                DownloadedButton.show();
             }else{
                 isAllFabVisible = false;
                 TimeButton.hide();
                 VoiceButton.hide();
                 ReloadButton.hide();
-                RandomButton.hide();
+                HomeButton.hide();
                 SettingButton.hide();
+                DownloadButton.hide();
+                DownloadedButton.hide();
                 TimePanel.setVisibility(View.GONE);
             }
         });
@@ -145,10 +166,17 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
             Intent OpenSettings = new Intent(this, SettingsActivity.class);
             startActivity(OpenSettings);
         });
-        RandomButton.setOnClickListener(view -> {
-            Random rand = new Random();
-            int random = rand.nextInt(200);
-            webView.loadUrl("https://slabber.io/posts/" + random);
+        HomeButton.setOnClickListener(view -> {
+            webView.loadUrl("https://slabber.io");
+        });
+        DownloadButton.setOnClickListener(view -> {
+            webView.saveWebArchive(getFilesDir().getAbsolutePath() + File.separator + webView.getTitle() + ".mhtml");{
+                Toast.makeText(this, "Page saved", Toast.LENGTH_SHORT).show();
+            }
+        });
+        DownloadedButton.setOnClickListener(view -> {
+            Intent OpenSaved = new Intent(this, SavedActivity.class);
+            startActivityForResult(OpenSaved, FILE_OPEN_REQUEST);
         });
         ReloadButton.setOnClickListener(view -> webView.reload());
         TimeButton.setOnClickListener(view -> TextToTime());
@@ -236,9 +264,12 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
+        webSettings.setSaveFormData(true);
+        webSettings.setAllowContentAccess(true);
+        webSettings.setAllowFileAccess(true);
+        WebView.setWebContentsDebuggingEnabled(true);
         webSettings.setUserAgentString(webSettings.getUserAgentString());
 
-        WebView.setWebContentsDebuggingEnabled(true);
         webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
         webView.loadUrl("https://slabber.io/");
@@ -285,7 +316,7 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
             Pattern re = Pattern.compile("[^.!?\\s][^.!?]*(?:[.!?](?!['\"]?\\s|$)[^.!?]*)*[.!?]?['\"]?(?=\\s|$)", Pattern.MULTILINE | Pattern.COMMENTS);
             Matcher reMatcher = re.matcher(text);
 
-            int position=0 ;
+            int position=0;
             int sizeOfChar= text.length();
             String testString= text.substring(position,sizeOfChar);
             while(reMatcher.find()) {
@@ -311,6 +342,7 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
 
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, FileChooserParams fileChooserParams) {
+
             // make sure there is no existing message
             if (WebActivity.this.uploadMessage != null) {
                 WebActivity.this.uploadMessage.onReceiveValue(null);

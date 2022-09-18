@@ -17,7 +17,7 @@ public class WebViewClientOptions extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView webView, String url) {
-        if (url == null || url.startsWith("http://") || url.startsWith("https://")) return false;
+        if (url == null || url.startsWith("http://") || url.startsWith("https://") || url.startsWith("file://")) return false;
 
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -40,6 +40,7 @@ public class WebViewClientOptions extends WebViewClient {
             InputStream textStream = new ByteArrayInputStream("".getBytes());
             return getTextWebResource(textStream);
         }
+
         return super.shouldInterceptRequest(view, url);
     }
 }
