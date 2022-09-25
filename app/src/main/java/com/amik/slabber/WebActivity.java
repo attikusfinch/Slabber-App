@@ -3,6 +3,7 @@ package com.amik.slabber;
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -93,11 +94,22 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         final Intent intent = getIntent();
 
         HideActionBar();
+        CheckPrivacyPolicy();
         WebViewConfigure();
         InitFabButton();
 
         if(intent.getData() != null){
             OpenLink(intent.getDataString());
+        }
+    }
+
+    private void CheckPrivacyPolicy(){
+        SharedPreferences settings = getApplicationContext().getSharedPreferences("agree", 0);
+        boolean IsAgree = settings.getBoolean("agree", false);
+
+        if(!IsAgree){
+            Intent OpenPrivacyPolicy = new Intent(this, PrivacyActivity.class);
+            startActivity(OpenPrivacyPolicy);
         }
     }
 

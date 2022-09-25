@@ -51,6 +51,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".PrivacyActivity"/>
+
         <service
             android:name=".Notification.FireBaseCallbackService"
             android:exported="false">
