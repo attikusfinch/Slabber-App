@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Slabber.AppWidget.Container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/Theme.Slabber.AppWidgetContainer"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/WidgetImageView"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/slabber" />
+
+    <LinearLayout
+        android:padding="8dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_toEndOf="@+id/WidgetImageView"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/WidgetTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-black"
+            android:maxLines="3"
+            android:text="Это тест виджета"
+            android:textAlignment="viewStart"
+            android:textColor="#1B1B1B"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/WidgetDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:maxLines="3"
+            android:text="Доброе время суток дамы и господа. Хочу нас всех поздравить ведь буквально пару часов назад приложение slabber одобрили в google play. Теперь"
+            android:textColor="#98A4BC"
+            android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

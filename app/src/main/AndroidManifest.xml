@@ -21,6 +21,18 @@
         android:roundIcon="@drawable/slabber"
         android:supportsRtl="true"
         android:theme="@style/Theme.Slabber">
+        <receiver
+            android:name=".WidgetActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_activity_info" />
+        </receiver>
+
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
@@ -30,7 +42,7 @@
             android:exported="true" />
         <activity
             android:name=".SavedActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".WebActivity"
             android:exported="true">
@@ -50,8 +62,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".PrivacyActivity"/>
+        <activity android:name=".PrivacyActivity" />
 
         <service
             android:name=".Notification.FireBaseCallbackService"

@@ -41,5 +41,8 @@ if you accept the above conditions then use app otherwise uninstall or leave it.
     <string name="privacy_policy">
 Продолжая, вы соглашаетесь с <a href="https://pages.flycricket.io/slabber/privacy.html">Политикой конфеденцальности</a> и также соглашаетесь с пользовательским контентом описанным выше.
     </string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">Последняя статья на слаббере</string>
 
 </resources>
