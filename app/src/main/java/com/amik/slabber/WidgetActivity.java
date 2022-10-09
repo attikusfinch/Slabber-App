@@ -58,8 +58,7 @@ public class WidgetActivity extends AppWidgetProvider {
 
         //output = parsePost.getInfoString();
 
-        views.setTextViewText(R.id.WidgetTitle, data[0]);
-        views.setTextViewText(R.id.WidgetDescription, data[1]);
+        SetText(views, data);
         //Picasso.get().load("https://slabber.io" + output[2]).into(remoteViews, R.layout.widget_activity, appWidgetIds);
 
 
@@ -89,9 +88,7 @@ public class WidgetActivity extends AppWidgetProvider {
         }
 
         //output = parsePost.getInfoString();
-
-        remoteViews.setTextViewText(R.id.WidgetTitle, output[0]);
-        remoteViews.setTextViewText(R.id.WidgetDescription, output[1]);
+        SetText(remoteViews, output);
 
         appWidgetTarget = new AppWidgetTarget(context, R.id.WidgetImageView, remoteViews, appWidgetIds);
 
@@ -141,8 +138,7 @@ public class WidgetActivity extends AppWidgetProvider {
                 e.printStackTrace();
             }
 
-            remoteViews.setTextViewText(R.id.WidgetTitle, output[0]);
-            remoteViews.setTextViewText(R.id.WidgetDescription, output[1]);
+            SetText(remoteViews, output);
 
             appWidgetTarget = new AppWidgetTarget(context, R.id.WidgetImageView, remoteViews, watchWidget);
 
@@ -153,6 +149,11 @@ public class WidgetActivity extends AppWidgetProvider {
             //widget manager to update the widget
             appWidgetManager.updateAppWidget(watchWidget, remoteViews);
         }
+    }
+
+    private void SetText(RemoteViews views, String[] output){
+        views.setTextViewText(R.id.WidgetTitle, output[0]);
+        views.setTextViewText(R.id.WidgetDescription, output[1]);
     }
 
     private void SetImage(Context context, String url){
