@@ -165,8 +165,7 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
                 Toast.makeText(WebActivity.this, "Отпечаток не подошел", Toast.LENGTH_SHORT).show();
             }
         });
-        // creating a variable for our promptInfo
-        // BIOMETRIC DIALOG
+
         final BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo
                 .Builder()
                 .setTitle("Slabber")
@@ -182,6 +181,10 @@ public class WebActivity extends AppCompatActivity implements TextToSpeech.OnIni
         String password = settings.getString("wallet_password", "");
 
         if(password == null){
+            return;
+        }
+
+        if(password.equals("")){
             return;
         }
 
