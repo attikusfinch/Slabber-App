@@ -45,4 +45,11 @@ if you accept the above conditions then use app otherwise uninstall or leave it.
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">Последняя статья на слаббере</string>
 
+    <string name="security_title">Безопасность</string>
+    <string name="password_field">Пароль от кошелька</string>
+
+    <string name="error_msg_biometric_not_setup">Установите отпечаток пальца в настройках</string>
+    <string name="error_msg_biometric_hw_unavailable">Функция отпечатка пальца отключена</string>
+    <string name="error_msg_no_biometric_hardware">Функция отпечатка пальца отсутсвует</string>
+
 </resources>

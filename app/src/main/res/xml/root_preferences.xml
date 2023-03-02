@@ -18,4 +18,17 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:icon="@drawable/ic_baseline_security_24"
+        app:title="@string/security_title">
+
+        <EditTextPreference
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:defaultValue="false"
+            android:key="wallet_password"
+            app:title="@string/password_field" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

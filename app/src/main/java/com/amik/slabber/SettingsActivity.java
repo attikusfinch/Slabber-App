@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
+import com.amik.slabber.Security.EncryptedPreferenceDataStore;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -24,6 +26,8 @@ public class SettingsActivity extends AppCompatActivity {
     private String TAG = "SettingsActivity";
 
     private TextView StartText;
+
+    private EditText PasswordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void UpdateSettings(){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        EncryptedPreferenceDataStore prefs = new EncryptedPreferenceDataStore(this);
 
         boolean isNotificationPost = prefs.getBoolean("allow_post", true);
         boolean isNotificationComment = prefs.getBoolean("allow_comments", true);
@@ -147,6 +151,9 @@ public class SettingsActivity extends AppCompatActivity {
     public static class SettingsFragment extends PreferenceFragmentCompat {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+            PreferenceManager preferenceManager = getPreferenceManager();
+            preferenceManager.setPreferenceDataStore(new EncryptedPreferenceDataStore(getContext()));
+
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
     }

@@ -3,12 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/button.xml" value="0.266" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_baseline_notifications_24.xml" value="0.3355" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_baseline_security_24.xml" value="0.3355" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.3355" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_baseline_timer_24.xml" value="0.3355" />
         <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_random.xml" value="0.2985" />
         <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_reload.xml" value="0.2985" />
         <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_reload_arrow.xml" value="0.2985" />
         <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_round_button.xml" value="0.3675" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/drawable/ic_round_download_24.xml" value="0.3355" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/layout-v21/widget_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/layout/activity_web.xml" value="0.33" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/layout/activity_save.xml" value="0.28306159420289856" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/layout/activity_web.xml" value="0.25" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/layout/settings_activity.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/layout/widget_activity.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Amirmistik play/AndroidStudioProjects/Slabber3/app/src/main/res/xml/root_preferences.xml" value="0.28306159420289856" />
       </map>
     </option>
   </component>

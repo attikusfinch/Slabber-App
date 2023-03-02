@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amik.slabber.Security.EncryptedPreferenceDataStore;
+
 import java.util.Objects;
 
 public class PrivacyActivity extends AppCompatActivity implements View.OnClickListener {
@@ -59,10 +61,8 @@ public class PrivacyActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         if(v.getId() == agree_button.getId()){
             if(agree_checkbox.isChecked() && !canScroll()){
-                SharedPreferences settings = getApplication().getSharedPreferences("agree", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("agree", true);
-                editor.apply();
+                EncryptedPreferenceDataStore settings = new EncryptedPreferenceDataStore(this);
+                settings.putBoolean("agree", true);
 
                 Intent intent = new Intent(this, WebActivity.class);
                 startActivity(intent);
